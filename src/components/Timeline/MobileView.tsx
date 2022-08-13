@@ -26,7 +26,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
     yearStep
   );
   const stats = useMemo(() => computeStats(data), [data]);
-  const views = [...stats.columns].sort();
+  const views = [...Array.from(stats.columns)].sort();
 
   const { width, ref } = useResizeDetector({
     handleHeight: false
