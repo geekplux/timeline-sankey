@@ -21,6 +21,7 @@ export type SankeyProps = {
   yearStep: number;
   nodeGap: number;
   nodeTitleGap: number;
+  nodeWidth: number;
   containerProps?: any;
 };
 
@@ -43,6 +44,7 @@ export default function Sankey({
   yearStep,
   nodeGap,
   nodeTitleGap,
+  nodeWidth,
   containerProps,
 }: SankeyProps) {
   const router = useRouter();
@@ -65,6 +67,7 @@ export default function Sankey({
     isMobile,
     yearStep,
     nodeGap,
+    nodeWidth
   });
 
   const onNodeHover = (node: Node) => () => {

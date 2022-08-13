@@ -30,6 +30,8 @@ export type VisParams = {
   mobileYearHeight: number;
   nodeGap: number;
   nodeTitleGap: number;
+  nodeWidth: number;
+  mobileNodeWidth: number;
 }
 
 export type TimelineProps = {

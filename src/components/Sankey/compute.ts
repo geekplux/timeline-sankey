@@ -3,8 +3,6 @@ import {
   DIRECT_LINK_KEYS,
   GRID_GAP,
   LINK_TRIANGLE_SIZE,
-  MOBILE_NODE_WIDTH,
-  NODE_WIDTH,
   YEAR_RANGE_KEY,
 } from 'src/lib/consts';
 import type { Filters, Link, Node } from 'src/@types/data';
@@ -29,6 +27,7 @@ type Params = {
   isMobile: boolean;
   yearStep: number;
   nodeGap: number;
+  nodeWidth: number;
 };
 
 export const isDirectLink = (link: Link) =>
@@ -150,11 +149,10 @@ function computeNodesXAxis(
   columns: number,
   grids: number,
   grid: number,
-  { width, isMobile }: Params
+  { width, nodeWidth }: Params
 ) {
   const gridWidth = width / grids;
   const columnWidth = (gridWidth - GRID_GAP) / columns; // width of each column
-  const nodeWidth = isMobile ? MOBILE_NODE_WIDTH : NODE_WIDTH;
 
   map(nodes, (node, i) => {
     node._xMidPoint =
