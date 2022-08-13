@@ -4,7 +4,6 @@ import {
   GRID_GAP,
   LINK_TRIANGLE_SIZE,
   MOBILE_NODE_WIDTH,
-  NODE_GAP,
   NODE_WIDTH,
   YEAR_RANGE_KEY,
 } from 'src/lib/consts';
@@ -29,6 +28,7 @@ type Params = {
   filters?: Filters;
   isMobile: boolean;
   yearStep: number;
+  nodeGap: number;
 };
 
 export const isDirectLink = (link: Link) =>
@@ -73,7 +73,7 @@ function computeNodes(data: any, maxYear: number, filters?: Filters) {
  * Compute the count of nodes side by side.
  * @param nodes
  */
-function computeNodesColumn(nodes: Node[]) {
+function computeNodesColumn(nodes: Node[], nodeGap: number) {
   // create a array to store the height of each column
   // the height = maximum value of `year_finish` of the node in current column, e.g. node._y0
   const columns: number[] = [];
@@ -87,7 +87,7 @@ function computeNodesColumn(nodes: Node[]) {
       let needNewColumn = true;
       for (let j = 0; j < columns.length; ++j) {
         // if current can join the exist column
-        if (node._y1 < columns[j] - NODE_GAP) {
+        if (node._y1 < columns[j] - nodeGap) {
           p += 1;
           columns[j] = node._y0;
           node._column = j;
@@ -315,7 +315,7 @@ function computeLinksPosition(nodes: Node[], links: Link[]) {
 }
 
 export function transformToGraph(params: Params) {
-  const { data, maxYear, filters } = params;
+  const { data, maxYear, filters, nodeGap } = params;
 
   // data quality check
   if (!data || !data.length) {
@@ -332,7 +332,7 @@ export function transformToGraph(params: Params) {
   columns.map((t, i) => {
     let tnodes = sortBy(nodesGroupByColumn[t], ['year_start']); // temp nodes of each column
     computeNodesYAxis(tnodes, params);
-    const grids = computeNodesColumn(tnodes);
+    const grids = computeNodesColumn(tnodes, nodeGap);
     computeNodesXAxis(tnodes, grids, columns.length, i, params);
     nodes = nodes.concat(tnodes);
   });

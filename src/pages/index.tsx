@@ -32,6 +32,18 @@ export default function TimelinePage() {
       min: 20,
       max: 100,
       step: 5
+    },
+    nodeGap: {
+      value: 30, // the minimum gap height between nodes in each column. which is for the space of node title, unit: pixel
+      min: 10,
+      max: 500,
+      step: 5
+    },
+    nodeTitleGap: {
+      value: 30, // the vertical gap height between node and its title, unit: pixel
+      min: 10,
+      max: 50,
+      step: 5
     }
   });
 

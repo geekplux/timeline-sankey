@@ -8,7 +8,7 @@ import { computeCanvasSize, computeStats } from './compute';
 import { TimelineProps } from 'src/@types/data';
 
 const DesktopView = ({ data, visParams }: TimelineProps) => {
-  const { yearStep, yearHeight: desktopYearHeight } = visParams;
+  const { yearStep, yearHeight: desktopYearHeight, nodeGap, nodeTitleGap } = visParams;
   const [yearHeight, setYearHeight] = useState(desktopYearHeight);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
@@ -40,6 +40,8 @@ const DesktopView = ({ data, visParams }: TimelineProps) => {
           minYear={minYear}
           maxYear={maxYear}
           yearStep={yearStep}
+          nodeGap={nodeGap}
+          nodeTitleGap={nodeTitleGap}
           data={data}
         />
       </div>

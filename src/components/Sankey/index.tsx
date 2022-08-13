@@ -2,7 +2,6 @@ import {
   CROSS_LINK_KEYS,
   DIRECT_LINK_KEYS,
   LINK_DEFAULT_COLOR,
-  NODE_TITLE_GAP,
   STROKE_DASH_ARRAY
 } from 'src/lib/consts';
 import { useBreakpoint } from 'src/lib/hooks';
@@ -20,6 +19,8 @@ export type SankeyProps = {
   minYear: number;
   maxYear: number;
   yearStep: number;
+  nodeGap: number;
+  nodeTitleGap: number;
   containerProps?: any;
 };
 
@@ -40,7 +41,9 @@ export default function Sankey({
   minYear,
   maxYear,
   yearStep,
-  containerProps
+  nodeGap,
+  nodeTitleGap,
+  containerProps,
 }: SankeyProps) {
   const router = useRouter();
   const isMobile = useBreakpoint('(max-width: 480px)');
@@ -60,7 +63,8 @@ export default function Sankey({
     height,
     filters,
     isMobile,
-    yearStep
+    yearStep,
+    nodeGap,
   });
 
   const onNodeHover = (node: Node) => () => {
@@ -151,7 +155,7 @@ export default function Sankey({
                   <p
                     className="absolute text-sm font-bold w-max"
                     style={{
-                      bottom: `-${NODE_TITLE_GAP}px`,
+                      bottom: `-${nodeTitleGap}px`,
                       transform: 'translate(-50%, 0)',
                       textShadow:
                         '-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white'

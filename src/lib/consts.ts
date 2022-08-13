@@ -7,10 +7,8 @@ export const BREAKPOINTS = {
   '3xl': '2000px'
 };
 
-export const MAX_YEAR_HEIGHT: number = 200;
-export const MIN_YEAR_HEIGHT: number = 40;
-export const NODE_GAP: number = 30; // the minimum gap height between nodes in each column. which is for the space of node title, unit: pixel
-export const NODE_TITLE_GAP: number = 30;
+export const MAX_YEAR_HEIGHT: number = 200; // max height of per year, for zoom function
+export const MIN_YEAR_HEIGHT: number = 40; // min height of per year, for zoom function
 export const NODE_WIDTH: number = 12;
 export const MOBILE_NODE_WIDTH: number = 8;
 export const GRID_GAP: number = 80;

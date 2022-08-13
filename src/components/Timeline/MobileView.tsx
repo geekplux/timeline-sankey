@@ -8,7 +8,7 @@ import { computeCanvasSize, computeStats } from './compute';
 import { TimelineProps } from 'src/@types/data';
 
 const MobileView = ({ data, visParams }: TimelineProps) => {
-  const { yearStep, mobileYearHeight } = visParams;
+  const { yearStep, mobileYearHeight, nodeGap, nodeTitleGap } = visParams;
   const [viewCursor, setViewCursor] = useState(0);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
@@ -57,6 +57,8 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
             minYear={minYear}
             maxYear={maxYear}
             yearStep={yearStep}
+            nodeGap={nodeGap}
+            nodeTitleGap={nodeTitleGap}
             data={data}
             containerProps={{
               style: {
