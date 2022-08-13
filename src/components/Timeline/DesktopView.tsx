@@ -15,6 +15,7 @@ const DesktopView = ({ data, visParams }: TimelineProps) => {
     nodeTitleGap,
     nodeWidth,
     linkDefaultColor,
+    gridGap
   } = visParams;
   const [yearHeight, setYearHeight] = useState(desktopYearHeight);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
@@ -51,6 +52,7 @@ const DesktopView = ({ data, visParams }: TimelineProps) => {
           nodeTitleGap={nodeTitleGap}
           nodeWidth={nodeWidth}
           linkDefaultColor={linkDefaultColor}
+          gridGap={gridGap}
           data={data}
         />
       </div>

@@ -1,9 +1,8 @@
 import {
   CROSS_LINK_KEYS,
   DIRECT_LINK_KEYS,
-  GRID_GAP,
   LINK_TRIANGLE_SIZE,
-  YEAR_RANGE_KEY,
+  YEAR_RANGE_KEY
 } from 'src/lib/consts';
 import type { Filters, Link, Node } from 'src/@types/data';
 import { scaleLinear } from 'd3';
@@ -28,6 +27,7 @@ type Params = {
   yearStep: number;
   nodeGap: number;
   nodeWidth: number;
+  gridGap: number;
 };
 
 export const isDirectLink = (link: Link) =>
@@ -149,16 +149,16 @@ function computeNodesXAxis(
   columns: number,
   grids: number,
   grid: number,
-  { width, nodeWidth }: Params
+  { width, nodeWidth, gridGap }: Params
 ) {
   const gridWidth = width / grids;
-  const columnWidth = (gridWidth - GRID_GAP) / columns; // width of each column
+  const columnWidth = (gridWidth - gridGap) / columns; // width of each column
 
   map(nodes, (node, i) => {
     node._xMidPoint =
       columnWidth * node._column +
       columnWidth / 2 +
-      grid * (gridWidth + GRID_GAP / 2);
+      grid * (gridWidth + gridGap / 2);
     node._x0 = node._xMidPoint - nodeWidth / 2;
     node._x1 = node._xMidPoint + nodeWidth / 2;
     node._width = nodeWidth;

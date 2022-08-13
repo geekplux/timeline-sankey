@@ -14,7 +14,8 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
     nodeGap,
     nodeTitleGap,
     mobileNodeWidth,
-    linkDefaultColor
+    linkDefaultColor,
+    gridGap
   } = visParams;
   const [viewCursor, setViewCursor] = useState(0);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
@@ -68,6 +69,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
             nodeTitleGap={nodeTitleGap}
             nodeWidth={mobileNodeWidth}
             linkDefaultColor={linkDefaultColor}
+            gridGap={gridGap}
             data={data}
             containerProps={{
               style: {

@@ -33,6 +33,7 @@ export type VisParams = {
   nodeWidth: number;
   mobileNodeWidth: number;
   linkDefaultColor: string;
+  gridGap: number;
 }
 
 export type TimelineProps = {

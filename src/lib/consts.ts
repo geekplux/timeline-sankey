@@ -9,7 +9,6 @@ export const BREAKPOINTS = {
 
 export const MAX_YEAR_HEIGHT: number = 200; // max height of per year, for zoom function
 export const MIN_YEAR_HEIGHT: number = 40; // min height of per year, for zoom function
-export const GRID_GAP: number = 80;
 export const STROKE_DASH_ARRAY: number = 1;
 export const LINK_TRIANGLE_SIZE: number = 7;
 export const YEAR_RANGE_KEY: string = 'yearRange';
