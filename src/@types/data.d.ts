@@ -24,6 +24,15 @@ export type Data = {
   column: Item;
 };
 
+export type VisParams = {
+  yearStep: number;
+}
+
+export type TimelineProps = {
+  data: Data[];
+  visParams: VisParams;
+};
+
 export type Node = Data & {
   // _sideBySideCount?: number;
   // _column?: number;

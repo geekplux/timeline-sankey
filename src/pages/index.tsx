@@ -4,12 +4,23 @@ import { Data } from 'src/@types/data';
 import { useControls } from 'leva';
 import dataGenerator from 'src/lib/dataGenerator';
 import { Leva } from 'leva';
+import { YEAR_STEP } from 'src/lib/consts';
 
 /**
  * Timeline page
  */
 export default function TimelinePage() {
   const [data, setData] = useState<Data[]>([]);
+
+  const visParams = useControls('Visualization Parameters', {
+    yearStep: {
+      value: YEAR_STEP,
+      min: 5,
+      max: 50,
+      step: 5
+    }
+  });
+
   const {
     nodeCount,
     yearRange,
@@ -25,7 +36,7 @@ export default function TimelinePage() {
     influencedByMaxCount,
     crossInfluencedMaxCount,
     crossInfluencedByMaxCount
-  } = useControls('Random Data Generation', {
+  } = useControls('Random Data Generation Parameters', {
     nodeCount: 50,
     yearRange: {
       min: 1600,
@@ -85,7 +96,7 @@ export default function TimelinePage() {
 
   return (
     <>
-      <Timeline data={data} />
+      <Timeline data={data} visParams={visParams} />
       <Leva
         theme={{
           sizes: {

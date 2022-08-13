@@ -1,4 +1,3 @@
-import { YEAR_STEP } from 'src/lib/consts';
 import range from 'lodash/range';
 import type { HTMLProps } from 'react';
 
@@ -6,15 +5,16 @@ export type YearsProps = {
   yearHeight: number;
   minYear: number;
   maxYear: number;
+  yearStep: number;
 } & HTMLProps<HTMLDivElement>;
 
 export default function Years({
   yearHeight,
   minYear,
   maxYear,
-  className = ''
+  yearStep,
 }: YearsProps) {
-  const years = range(minYear, maxYear, YEAR_STEP).reverse();
+  const years = range(minYear, maxYear, yearStep).reverse();
 
   return (
     <div className="w-full years">

@@ -6,16 +6,15 @@ import { useResizeDetector } from 'react-resize-detector';
 import { useSwipeable } from 'react-swipeable';
 import { LeftButton, RightButton } from './buttons';
 import { computeCanvasSize, computeStats } from './compute';
+import { TimelineProps } from 'src/@types/data';
 
-export type Props = {
-  data: any;
-};
-
-const MobileView = ({ data }: Props) => {
+const MobileView = ({ data, visParams }: TimelineProps) => {
+  const { yearStep } = visParams;
   const [viewCursor, setViewCursor] = useState(0);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
-    MOBILE_YEAR_HEIGHT
+    MOBILE_YEAR_HEIGHT,
+    yearStep
   );
   const stats = useMemo(() => computeStats(data), [data]);
   const views = [...stats.columns].sort();
@@ -46,6 +45,7 @@ const MobileView = ({ data }: Props) => {
         minYear={minYear}
         maxYear={maxYear}
         yearHeight={MOBILE_YEAR_HEIGHT}
+        yearStep={yearStep}
       />
       <div
         className="absolute top-0 w-full pl-16 pr-2 overflow-hidden"

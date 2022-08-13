@@ -7,7 +7,6 @@ import {
   NODE_GAP,
   NODE_WIDTH,
   YEAR_RANGE_KEY,
-  YEAR_STEP
 } from 'src/lib/consts';
 import type { Filters, Link, Node } from 'src/@types/data';
 import { scaleLinear } from 'd3';
@@ -29,6 +28,7 @@ type Params = {
   height: number;
   filters?: Filters;
   isMobile: boolean;
+  yearStep: number;
 };
 
 export const isDirectLink = (link: Link) =>
@@ -113,10 +113,10 @@ function computeNodesColumn(nodes: Node[]) {
  */
 function computeNodesYAxis(
   nodes: Node[],
-  { minYear, maxYear, height }: Params
+  { minYear, maxYear, height, yearStep }: Params
 ) {
   const yScale = scaleLinear()
-    .domain([minYear, maxYear + YEAR_STEP / 2])
+    .domain([minYear, maxYear + yearStep / 2])
     .range([height, 0]);
 
   map(nodes, (node, i) => {

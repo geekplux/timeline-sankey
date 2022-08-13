@@ -6,16 +6,15 @@ import { YEAR_HEIGHT } from 'src/lib/consts';
 import { useMemo, useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import { computeCanvasSize, computeStats } from './compute';
+import { TimelineProps } from 'src/@types/data';
 
-export type Props = {
-  data: any;
-};
-
-const DesktopView = ({ data }: Props) => {
+const DesktopView = ({ data, visParams }: TimelineProps) => {
+  const { yearStep } = visParams;
   const [yearHeight, setYearHeight] = useState(YEAR_HEIGHT);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
-    yearHeight
+    yearHeight,
+    yearStep
   );
   const stats = useMemo(() => computeStats(data), [data]);
 
@@ -25,7 +24,12 @@ const DesktopView = ({ data }: Props) => {
 
   return (
     <>
-      <Years minYear={minYear} maxYear={maxYear} yearHeight={yearHeight} />
+      <Years
+        minYear={minYear}
+        maxYear={maxYear}
+        yearHeight={yearHeight}
+        yearStep={yearStep}
+      />
       <div
         className="absolute top-0 w-9/12 canvas"
         style={{ height: canvasHeight }}
@@ -36,6 +40,7 @@ const DesktopView = ({ data }: Props) => {
           height={canvasHeight}
           minYear={minYear}
           maxYear={maxYear}
+          yearStep={yearStep}
           data={data}
         />
       </div>

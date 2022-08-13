@@ -19,6 +19,7 @@ export type SankeyProps = {
   height?: number;
   minYear: number;
   maxYear: number;
+  yearStep: number;
   containerProps?: any;
 };
 
@@ -38,6 +39,7 @@ export default function Sankey({
   height,
   minYear,
   maxYear,
+  yearStep,
   containerProps
 }: SankeyProps) {
   const router = useRouter();
@@ -57,7 +59,8 @@ export default function Sankey({
     width,
     height,
     filters,
-    isMobile
+    isMobile,
+    yearStep
   });
 
   const onNodeHover = (node: Node) => () => {

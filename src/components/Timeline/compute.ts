@@ -1,4 +1,3 @@
-import { YEAR_STEP } from 'src/lib/consts';
 import type { Data } from 'src/@types/data';
 
 /**
@@ -30,22 +29,33 @@ export function yearRange(data: Data[]) {
 export function computeCanvasHeight({
   minYear,
   maxYear,
-  yearHeight
+  yearHeight,
+  yearStep
 }: {
   minYear: number;
   maxYear: number;
   yearHeight: number;
+  yearStep: number;
 }): number {
-  return ((maxYear - minYear) / YEAR_STEP + 1) * yearHeight;
+  return ((maxYear - minYear) / yearStep + 1) * yearHeight;
 }
 
-export function computeCanvasSize(data: Data[], yearHeight: number) {
+export function computeCanvasSize(
+  data: Data[],
+  yearHeight: number,
+  yearStep: number
+) {
   if (!data || !data.length) {
     console.error('No data');
   }
 
   const { minYear, maxYear } = yearRange(data);
-  const canvasHeight = computeCanvasHeight({ minYear, maxYear, yearHeight });
+  const canvasHeight = computeCanvasHeight({
+    minYear,
+    maxYear,
+    yearHeight,
+    yearStep
+  });
   return { minYear, maxYear, canvasHeight };
 }
 
