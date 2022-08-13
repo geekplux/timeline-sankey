@@ -94,11 +94,16 @@ export default function TimelinePage() {
     crossInfluencedMaxCount,
     crossInfluencedByMaxCount
   } = useControls('Random Data Generation Parameters', {
-    nodeCount: 50,
+    nodeCount: {
+      value: 40,
+      min: 10,
+      max: 100,
+      step: 10,
+    },
     yearRange: {
       min: 1600,
       max: 2022,
-      value: [1600, 2022]
+      value: [1800, 2022]
     },
     columnCount: {
       value: 3,

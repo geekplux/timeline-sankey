@@ -111,7 +111,7 @@ export default function Sankey({
   };
 
   return (
-    <div className="pt-8 sankey" {...containerProps}>
+    <div className="py-8 sankey" {...containerProps}>
       <svg width={width} height={height} className="overflow-visible">
         <g className="direct-links">
           {links
