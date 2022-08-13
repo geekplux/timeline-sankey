@@ -1,7 +1,6 @@
 import {
   CROSS_LINK_KEYS,
   DIRECT_LINK_KEYS,
-  LINK_DEFAULT_COLOR,
   STROKE_DASH_ARRAY
 } from 'src/lib/consts';
 import { useBreakpoint } from 'src/lib/hooks';
@@ -22,6 +21,7 @@ export type SankeyProps = {
   nodeGap: number;
   nodeTitleGap: number;
   nodeWidth: number;
+  linkDefaultColor: string;
   containerProps?: any;
 };
 
@@ -45,6 +45,7 @@ export default function Sankey({
   nodeGap,
   nodeTitleGap,
   nodeWidth,
+  linkDefaultColor,
   containerProps,
 }: SankeyProps) {
   const router = useRouter();
@@ -116,7 +117,7 @@ export default function Sankey({
                   hoveredNodes.size &&
                   (hoveredNodes.has(l.source) || hoveredNodes.has(l.target))
                     ? l.sourceNode._color
-                    : LINK_DEFAULT_COLOR
+                    : linkDefaultColor
                 }
                 opacity={
                   // hoveredNodes.size && hoveredNodes.has(l.source) ? 0.3 : 0.5

@@ -45,6 +45,7 @@ export default function TimelinePage() {
       max: 30,
       step: 1
     },
+    linkDefaultColor: 'rgba(220, 220, 220, 1)',
     nodeGap: {
       value: 30, // the minimum gap height between nodes in each column. which is for the space of node title, unit: pixel
       min: 10,

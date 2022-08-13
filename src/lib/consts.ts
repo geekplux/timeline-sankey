@@ -22,4 +22,3 @@ export const CROSS_LINK_KEYS = {
   source: 'cross_influenced',
   target: 'cross_influenced_by'
 };
-export const LINK_DEFAULT_COLOR = 'rgba(220, 220, 220, 1)';
