@@ -1,6 +1,5 @@
 import Sankey from 'src/components/Sankey';
 import Years from 'src/components/Years';
-import { MOBILE_YEAR_HEIGHT } from 'src/lib/consts';
 import { useMemo, useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import { useSwipeable } from 'react-swipeable';
@@ -9,11 +8,11 @@ import { computeCanvasSize, computeStats } from './compute';
 import { TimelineProps } from 'src/@types/data';
 
 const MobileView = ({ data, visParams }: TimelineProps) => {
-  const { yearStep } = visParams;
+  const { yearStep, mobileYearHeight } = visParams;
   const [viewCursor, setViewCursor] = useState(0);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
-    MOBILE_YEAR_HEIGHT,
+    mobileYearHeight,
     yearStep
   );
   const stats = useMemo(() => computeStats(data), [data]);
@@ -44,7 +43,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
       <Years
         minYear={minYear}
         maxYear={maxYear}
-        yearHeight={MOBILE_YEAR_HEIGHT}
+        yearHeight={mobileYearHeight}
         yearStep={yearStep}
       />
       <div
@@ -57,6 +56,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
             height={canvasHeight}
             minYear={minYear}
             maxYear={maxYear}
+            yearStep={yearStep}
             data={data}
             containerProps={{
               style: {

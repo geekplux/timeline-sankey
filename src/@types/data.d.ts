@@ -26,6 +26,8 @@ export type Data = {
 
 export type VisParams = {
   yearStep: number;
+  yearHeight: number;
+  mobileYearHeight: number;
 }
 
 export type TimelineProps = {

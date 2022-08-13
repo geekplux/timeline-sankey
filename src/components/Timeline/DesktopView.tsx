@@ -2,15 +2,14 @@ import FilterBar from 'src/components/FilterBar';
 import Sankey from 'src/components/Sankey';
 import Years from 'src/components/Years';
 import Zoom from 'src/components/Zoom';
-import { YEAR_HEIGHT } from 'src/lib/consts';
 import { useMemo, useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import { computeCanvasSize, computeStats } from './compute';
 import { TimelineProps } from 'src/@types/data';
 
 const DesktopView = ({ data, visParams }: TimelineProps) => {
-  const { yearStep } = visParams;
-  const [yearHeight, setYearHeight] = useState(YEAR_HEIGHT);
+  const { yearStep, yearHeight: desktopYearHeight } = visParams;
+  const [yearHeight, setYearHeight] = useState(desktopYearHeight);
   const { minYear, maxYear, canvasHeight } = computeCanvasSize(
     data,
     yearHeight,

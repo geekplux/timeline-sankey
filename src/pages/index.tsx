@@ -4,7 +4,7 @@ import { Data } from 'src/@types/data';
 import { useControls } from 'leva';
 import dataGenerator from 'src/lib/dataGenerator';
 import { Leva } from 'leva';
-import { YEAR_STEP } from 'src/lib/consts';
+import { MAX_YEAR_HEIGHT, MIN_YEAR_HEIGHT } from 'src/lib/consts';
 
 /**
  * Timeline page
@@ -14,9 +14,21 @@ export default function TimelinePage() {
 
   const visParams = useControls('Visualization Parameters', {
     yearStep: {
-      value: YEAR_STEP,
+      value: 10,
       min: 5,
       max: 50,
+      step: 5
+    },
+    yearHeight: {
+      value: 110, // height of per year
+      min: MIN_YEAR_HEIGHT,
+      max: MAX_YEAR_HEIGHT,
+      step: 10
+    },
+    mobileYearHeight: {
+      value: 50, // height of per year
+      min: 20,
+      max: 100,
       step: 5
     }
   });
@@ -100,7 +112,7 @@ export default function TimelinePage() {
       <Leva
         theme={{
           sizes: {
-            rootWidth: '400px',
+            rootWidth: '400px'
           }
         }}
       />
