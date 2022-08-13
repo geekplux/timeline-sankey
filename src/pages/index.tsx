@@ -5,13 +5,15 @@ import { useControls } from 'leva';
 import dataGenerator from 'src/lib/dataGenerator';
 import { Leva } from 'leva';
 import { MAX_YEAR_HEIGHT, MIN_YEAR_HEIGHT } from 'src/lib/consts';
+import { BREAKPOINTS } from 'src/lib/consts';
+import { useBreakpoint } from 'src/lib/hooks';
 
 /**
  * Timeline page
  */
 export default function TimelinePage() {
   const [data, setData] = useState<Data[]>([]);
-
+  const isMobile = useBreakpoint(`(max-width: ${BREAKPOINTS.lg})`);
   const visParams = useControls('Visualization Parameters', {
     yearStep: {
       value: 10,
@@ -108,11 +110,11 @@ export default function TimelinePage() {
 
   return (
     <>
-      <Timeline data={data} visParams={visParams} />
+      <Timeline data={data} visParams={visParams} isMobile={isMobile} />
       <Leva
         theme={{
           sizes: {
-            rootWidth: '400px'
+            rootWidth: isMobile ? '80%' : '400px'
           }
         }}
       />

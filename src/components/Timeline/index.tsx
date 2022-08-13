@@ -1,16 +1,15 @@
 import { TimelineProps } from 'src/@types/data';
-import { BREAKPOINTS } from 'src/lib/consts';
-import { useBreakpoint } from 'src/lib/hooks';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
 
+type Props = TimelineProps & {
+  isMobile: boolean;
+};
 
 /**
  * ### Timeline visualization component
  */
-export function Timeline({ data, visParams }: TimelineProps) {
-  const isMobile = useBreakpoint(`(max-width: ${BREAKPOINTS.lg})`);
-
+export function Timeline({ data, visParams, isMobile }: Props) {
   return (
     <div className="relative flex justify-center w-full timeline">
       {isMobile ? (
