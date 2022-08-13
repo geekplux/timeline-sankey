@@ -32,6 +32,8 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
     handleHeight: false
   });
 
+  if (!width) return null;
+
   const slideLeft = () => {
     if (viewCursor >= views.length - 1) return;
     setViewCursor(viewCursor + 1);
