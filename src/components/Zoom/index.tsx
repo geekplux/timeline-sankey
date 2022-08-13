@@ -1,6 +1,9 @@
 import { MAX_YEAR_HEIGHT, MIN_YEAR_HEIGHT } from 'src/lib/consts';
 
-export default function Zoom({ yearHeight, setYearHeight }) {
+export default function Zoom({ yearHeight, setYearHeight }: {
+  yearHeight: number;
+  setYearHeight: (yearHeight: number) => void;
+}) {
   const zoomOut = () => {
     if (yearHeight / 1.5 > MIN_YEAR_HEIGHT) setYearHeight(yearHeight / 1.5);
   };

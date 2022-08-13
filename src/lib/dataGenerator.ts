@@ -24,7 +24,9 @@ export default function dataGenerator(
   crossInfluencedByMaxCount: number
 ) {
   const data = [];
-  const nodeIdsGroupByColumn = new Array(columnCount).fill(0).map(() => []);
+  const nodeIdsGroupByColumn = new Array(columnCount)
+    .fill(0)
+    .map((): number[] => []);
 
   for (let i = 0; i < count; i++) {
     const year1 = getRandomInt(yearRange[0], yearRange[1]);
