@@ -33,6 +33,8 @@ export type VisParams = {
   nodeWidth: number;
   mobileNodeWidth: number;
   linkDefaultColor: string;
+  crossLinkStrokeDashArray: number;
+  crossLinkTriangleSize: number;
   gridGap: number;
 }
 

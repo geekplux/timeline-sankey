@@ -15,6 +15,8 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
     nodeTitleGap,
     mobileNodeWidth,
     linkDefaultColor,
+    crossLinkStrokeDashArray,
+    crossLinkTriangleSize,
     gridGap
   } = visParams;
   const [viewCursor, setViewCursor] = useState(0);
@@ -69,6 +71,8 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
             nodeTitleGap={nodeTitleGap}
             nodeWidth={mobileNodeWidth}
             linkDefaultColor={linkDefaultColor}
+            crossLinkStrokeDashArray={crossLinkStrokeDashArray}
+            crossLinkTriangleSize={crossLinkTriangleSize}
             gridGap={gridGap}
             data={data}
             containerProps={{

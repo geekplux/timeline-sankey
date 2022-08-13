@@ -1,7 +1,6 @@
 import {
   CROSS_LINK_KEYS,
   DIRECT_LINK_KEYS,
-  STROKE_DASH_ARRAY
 } from 'src/lib/consts';
 import { useBreakpoint } from 'src/lib/hooks';
 import { onKeyAction } from 'src/lib/utils';
@@ -23,6 +22,8 @@ export type SankeyProps = {
   nodeWidth: number;
   gridGap: number;
   linkDefaultColor: string;
+  crossLinkStrokeDashArray: number;
+  crossLinkTriangleSize: number;
   containerProps?: any;
 };
 
@@ -47,6 +48,8 @@ export default function Sankey({
   nodeTitleGap,
   nodeWidth,
   linkDefaultColor,
+  crossLinkStrokeDashArray,
+  crossLinkTriangleSize,
   gridGap,
   containerProps,
 }: SankeyProps) {
@@ -71,7 +74,8 @@ export default function Sankey({
     yearStep,
     nodeGap,
     nodeWidth,
-    gridGap
+    gridGap,
+    crossLinkTriangleSize
   });
 
   const onNodeHover = (node: Node) => () => {
@@ -184,7 +188,7 @@ export default function Sankey({
                   d={l.d}
                   fill="none"
                   stroke="rgba(0, 0, 0, 0.4)"
-                  strokeDasharray={STROKE_DASH_ARRAY}
+                  strokeDasharray={crossLinkStrokeDashArray}
                   // opacity={
                   //   hoveredNodes.size
                   //     ? hoveredNodes.has(l.source) || hoveredNodes.has(l.target)

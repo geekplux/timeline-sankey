@@ -1,7 +1,6 @@
 import {
   CROSS_LINK_KEYS,
   DIRECT_LINK_KEYS,
-  LINK_TRIANGLE_SIZE,
   YEAR_RANGE_KEY
 } from 'src/lib/consts';
 import type { Filters, Link, Node } from 'src/@types/data';
@@ -28,6 +27,7 @@ type Params = {
   nodeGap: number;
   nodeWidth: number;
   gridGap: number;
+  crossLinkTriangleSize: number;
 };
 
 export const isDirectLink = (link: Link) =>
@@ -210,7 +210,7 @@ function computeLinks(nodes: Node[]) {
   return links;
 }
 
-function computeLinksPosition(nodes: Node[], links: Link[]) {
+function computeLinksPosition(nodes: Node[], links: Link[], crossLinkTriangleSize: number) {
   const nodesMap = new Map(nodes.map((node) => [node.id, node]));
 
   map(links, (l) => {
@@ -278,8 +278,8 @@ function computeLinksPosition(nodes: Node[], links: Link[]) {
       //   Math.abs(t?._xMidPoint - controlNode.x)
       // );
 
-      const longSide = Math.cos(Math.PI / 3) * LINK_TRIANGLE_SIZE;
-      const shortSide = Math.sin(Math.PI / 6) * LINK_TRIANGLE_SIZE;
+      const longSide = Math.cos(Math.PI / 3) * crossLinkTriangleSize;
+      const shortSide = Math.sin(Math.PI / 6) * crossLinkTriangleSize;
 
       /**
        * just check the x axis
@@ -313,7 +313,7 @@ function computeLinksPosition(nodes: Node[], links: Link[]) {
 }
 
 export function transformToGraph(params: Params) {
-  const { data, maxYear, filters, nodeGap } = params;
+  const { data, maxYear, filters, nodeGap, crossLinkTriangleSize } = params;
 
   // data quality check
   if (!data || !data.length) {
@@ -337,7 +337,7 @@ export function transformToGraph(params: Params) {
 
   // compute links
   let links = computeLinks(nodes);
-  links = computeLinksPosition(nodes, links);
+  links = computeLinksPosition(nodes, links, crossLinkTriangleSize);
 
   return { nodes, links };
 }

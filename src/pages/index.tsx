@@ -63,7 +63,19 @@ export default function TimelinePage() {
       min: 10,
       max: 50,
       step: 5
-    }
+    },
+    crossLinkStrokeDashArray: {
+      value: 1,
+      min: 1,
+      max: 20,
+      step: 1,
+    },
+    crossLinkTriangleSize: {
+      value: 7,
+      min: 5,
+      max: 20,
+      step: 1,
+    },
   });
 
   const {
