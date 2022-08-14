@@ -48,8 +48,6 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
     trackMouse: true
   });
 
-  if (!width) return null;
-
   return (
     <>
       <Years
@@ -64,7 +62,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
       >
         <div className="canvas" ref={ref} style={{ height: canvasHeight }}>
           <Sankey
-            width={width * views.length}
+            width={width! * views.length}
             height={canvasHeight}
             minYear={minYear}
             maxYear={maxYear}
@@ -79,7 +77,7 @@ const MobileView = ({ data, visParams }: TimelineProps) => {
             data={data}
             containerProps={{
               style: {
-                transform: `translate(${-width * viewCursor}px, 0)`,
+                transform: `translate(${-width! * viewCursor}px, 0)`,
                 transition: 'transform 0.5s'
               }
             }}
